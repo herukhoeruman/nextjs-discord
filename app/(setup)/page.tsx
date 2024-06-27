@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
 
 import { db } from "@/lib/db";
 import { initialProfile } from "@/lib/initial-profile";
-import { UserButton } from "@clerk/nextjs";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const SetUpPage = async () => {
   const profile = await initialProfile();
@@ -24,6 +25,7 @@ const SetUpPage = async () => {
   return (
     <div>
       <UserButton afterSignOutUrl="/" />
+      <ModeToggle />
     </div>
   );
 };
