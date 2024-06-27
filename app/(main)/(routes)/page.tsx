@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
-    <main className="h-full flex justify-center items-center">
-      <Button>Click me</Button>
-    </main>
+    <div>
+      <p>This a protected route!</p>
+      <UserButton afterSignOutUrl="/" />
+    </div>
   );
 }
