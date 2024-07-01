@@ -4,6 +4,7 @@ import { UserButton } from "@clerk/nextjs";
 import { db } from "@/lib/db";
 import { initialProfile } from "@/lib/initial-profile";
 import { ModeToggle } from "@/components/mode-toggle";
+import { InitialModal } from "@/components/modals/initial-modal";
 
 const SetUpPage = async () => {
   const profile = await initialProfile();
@@ -22,12 +23,7 @@ const SetUpPage = async () => {
     return redirect(`/servers/${server.id}`);
   }
 
-  return (
-    <div>
-      <UserButton afterSignOutUrl="/" />
-      <ModeToggle />
-    </div>
-  );
+  return <InitialModal />;
 };
 
 export default SetUpPage;
