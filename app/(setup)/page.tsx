@@ -3,22 +3,23 @@ import { UserButton } from "@clerk/nextjs";
 
 import { db } from "@/lib/db";
 import { initialProfile } from "@/lib/initial-profile";
-import { ModeToggle } from "@/components/mode-toggle";
 import { InitialModal } from "@/components/modals/initial-modal";
 
 const SetUpPage = async () => {
   const profile = await initialProfile();
 
+  // find server with member profile id
   const server = await db.server.findFirst({
     where: {
       members: {
         some: {
-          id: profile.userId,
+          profileId: profile.id,
         },
       },
     },
   });
 
+  // if server exists, redirect to server page
   if (server) {
     return redirect(`/servers/${server.id}`);
   }
