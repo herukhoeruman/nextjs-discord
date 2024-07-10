@@ -21,7 +21,8 @@ export async function POST(req: Request) {
         name,
         imageUrl,
         profileId: profile.id,
-        inviteCode: uuidv4(),
+        // inviteCode: uuidv4(),
+        inviteCode: Math.random().toString(36).substring(2, 15),
         channels: {
           create: [{ name: "general", profileId: profile.id }],
         },
